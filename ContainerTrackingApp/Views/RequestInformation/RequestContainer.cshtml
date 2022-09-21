@@ -1,0 +1,180 @@
+﻿@model IEnumerable<ContainerTrackingApp.Models.RequestDetail>
+
+@{
+    ViewBag.Title = "RequestContainer";
+    Layout = "~/Views/Shared/__AdminLayout.cshtml";
+}
+@*<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnSearch").click(function () {
+            var searchText = $("#txtSearch").val();
+            if (searchText != null) {
+                $.ajax({
+                    url: '/RequestInformation/RequestSearchByBlNumber',
+                    dataType: "json",
+                    type: "POST",
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify({ BLNumber: searchText }),
+                    async: true,
+                    processData: false,
+                    cache: false,
+                    success: function (data) {
+                        alert(data);
+                    },
+                    error: function (xhr) {
+                        alert(xhr);
+                    }
+                })
+            }
+        });
+    });
+</script>*@
+
+<table class="table-condensed" width="100%">
+    <tr>
+        <td align="left" width="10%">
+            <h4>Active Request List</h4>
+        </td>
+        <td align="left" width="90%">
+            <div class="form-group">
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder=" BL Number Search" name="search" id="txtSearch">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit" id="btnSearch" onclick="location.href='@Url.Action("RequestSearchByBlNumber", "RequestInformation",new {BLNumber = "1958A00192"})'"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                @Html.DisplayName("Request ID")
+            </th>
+            <th>
+                @Html.DisplayName("carrier name")
+            </th>
+            <th>
+                @Html.DisplayName("suspicious key")
+            </th>
+            <th>
+                @Html.DisplayName("Request status")
+            </th>
+            <th>
+                @Html.DisplayName("Request Type")
+            </th>
+            <th>
+                @Html.DisplayName("Request key")
+            </th>
+            @*<th>
+                    @Html.DisplayName("Contractual ETA POD")
+                </th>
+                <th>
+                    @Html.DisplayName("Contractual ETA DLV")
+                </th>*@
+            <th>
+                @Html.DisplayName("Created On")
+            </th>
+            <th>
+                @Html.DisplayName("Modified On")
+            </th>
+            <th>
+                @Html.DisplayName("Last carrier update")
+            </th>
+            <th>
+                @Html.DisplayName("Last actuals update")
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("ContainerDetailView", "RequestInformation", new { RequestID = item.RequestID })">
+                        <img src="~/img/if_199_CircledPlus_183316.png" />
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequestID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.request_carrier_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.suspicious_key)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status_verbose)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.request_type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.request_key)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.contractual_eta_pod)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.contractual_eta_dlv)
+                    </td>*@
+                <td>
+                    @if (item.created != null)
+                    {
+                        DateTime CreatedDate = Convert.ToDateTime(item.created);
+                        @CreatedDate.ToShortDateString()
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.created)
+                    }
+                </td>
+                <td>
+                    @if (item.modified != null)
+                    {
+                        DateTime ModifieddDate = Convert.ToDateTime(item.modified);
+                        @ModifieddDate.ToShortDateString()
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.modified)
+                    }
+                </td>
+                <td>
+                    @if (item.last_carrier_update != null)
+                    {
+                        DateTime Last_carrier_update = Convert.ToDateTime(item.last_carrier_update);
+                        @Last_carrier_update.ToShortDateString()
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.last_carrier_update)
+                    }
+                </td>
+                <td>
+                    @if (item.last_actuals_update != null)
+                    {
+                        DateTime Last_actuals_update = Convert.ToDateTime(item.last_actuals_update);
+                        @Last_actuals_update.ToShortDateString()
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.last_actuals_update)
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+

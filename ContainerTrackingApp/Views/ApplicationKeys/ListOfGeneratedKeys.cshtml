@@ -1,0 +1,99 @@
+﻿@model IEnumerable<ContainerTrackingApp.Models.ClientTokenViewModel>
+
+@{
+    ViewBag.Title = "ListOfGeneratedKeys";
+    Layout = "~/Views/Shared/__AdminLayout.cshtml";
+}
+
+<h2>ListOfGeneratedKeys</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientSecret)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IssuedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpiredOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TokenKey)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientSecret)
+        </td>
+        <td>
+            @if (item.CreatedOn != null)
+            {
+                DateTime CreatedOn = Convert.ToDateTime(item.CreatedOn);
+                @CreatedOn.ToShortDateString()
+            }
+            else
+            {
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            }
+        </td>
+
+        <td>
+            @if (item.IssuedOn != null)
+            {
+                DateTime IssuedOn = Convert.ToDateTime(item.IssuedOn);
+                @IssuedOn.ToShortDateString()
+            }
+            else
+            {
+                @Html.DisplayFor(modelItem => item.IssuedOn)
+            }
+        </td>
+
+        <td>
+            @if (item.ExpiredOn != null)
+            {
+                DateTime ExpiredOn = Convert.ToDateTime(item.ExpiredOn);
+                @ExpiredOn.ToShortDateString()
+            }
+            else
+            {
+                @Html.DisplayFor(modelItem => item.ExpiredOn)
+            }
+        </td>
+        <td>
+            @Html.TextAreaFor(modelItem => item.TokenKey)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ClientKeyID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ClientKeyID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ClientKeyID })
+        </td>
+    </tr>
+}
+
+</table>

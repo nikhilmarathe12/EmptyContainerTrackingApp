@@ -1,0 +1,84 @@
+﻿@model IEnumerable<ContainerTrackingApp.Models.ExceptionDetail>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/__AdminLayout.cshtml";
+}
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    function ShowModel(id) {
+        var StockTrace = id;
+        $('#my_modal').on('show.bs.modal', function (e) {
+            document.getElementById("hiddenStackValue").innerText = StockTrace;
+        });
+    }
+</script>
+<h2>Exception Detail</h2>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>
+                Sr.No
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExceptionLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExceptionMessage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExceptionTrace)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExceptionDateTime)
+            </th>
+        </tr>
+        @{ int rowNo = 0; }
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(rowNo += 1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExceptionLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExceptionMessage)
+                </td>
+                <td>
+                    <a onclick="ShowModel(this.id);" href="#my_modal" data-toggle="modal" id="@item.ExceptionTrace">Open Modal</a>
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.ExceptionTrace)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExceptionDateTime)
+                </td>
+            </tr>
+        }
+
+    </table>
+    <!-- Bootstrap modal popup -->
+    
+    <div class="modal fade" id="my_modal" tabindex="-1" role="dialog" aria-labelledby="my_modalLabel">
+        <div class="modal-dialog-Paragraph" role="dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Stack Trace</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="some-neat-bootstrap-class">
+                      <label name="hiddenStackValue" id="hiddenStackValue" value="" />
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+                        @*<button type="button" class="btn btn-primary">Yes</button>*@
+                    </div>
+                </div>
+        </div>
+        <!-- End of the boostrap modal popup -->
+    </div>

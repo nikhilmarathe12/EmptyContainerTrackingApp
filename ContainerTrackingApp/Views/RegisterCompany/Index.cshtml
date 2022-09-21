@@ -1,0 +1,107 @@
+﻿@model IEnumerable<ContainerTrackingApp.Models.RegisterCompany>
+
+@{
+
+    Layout = "~/Views/Shared/__AdminLayout.cshtml";
+}
+
+@{
+    ViewBag.Title = "List of Companies";
+}
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/CompanyDeleteConfirmation.js"></script>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonInCharge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.UserID)
+            </th>*@
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PersonInCharge)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.UserID)
+                        </td>*@
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CompanyID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CompanyID }) |
+                    <a href="javascript:void(0)" name="ID1" id="@item.CompanyID" class="delete">Delete</a> |
+                    @Html.ActionLink("Application Key", "GetApplicationKeyByID", "ApplicationKeys", new { id = item.CompanyID }, null) |
+                    @Html.ActionLink("Token Details", "GetClientKeyTokenDetails", "ApplicationKeys", new { id = item.CompanyID }, null)
+                </td>
+            </tr>
+        }
+    </table>
+    @*  this is commented due to some development issue  *@
+    <table align="left" class="table">
+        <thead>
+            <tr>
+                <th align="left">
+                    <div class="col-sm-offset-0 col-sm-0">
+                        <input style="align-content:flex-start" type="button" id="btnRegister" value="Create New" class="btn btn-sm btn-primary" onclick="location.href='@Url.Action("Create", "RegisterCompany", new { info="Create"})'" />
+                    </div>
+                </th>
+            </tr>
+        </thead>
+    </table>
+    <!-- Bootstrap modal popup -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header alert alert-danger">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Infromation Dialog</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="success-message">Are you sure you wish to delete this record ? </p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success delete-confirm">Ok</button>
+                    <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of the boostrap modal popup -->
+</div>

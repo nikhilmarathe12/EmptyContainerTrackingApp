@@ -1,0 +1,1057 @@
+﻿@model IEnumerable<ContainerTrackingApp.Models.ContainershipmentDetails>
+
+@{
+    ViewBag.Title = "ContainerDetailView";
+    Layout = "~/Views/Shared/__AdminLayout.cshtml";
+}
+
+<h2>Container Detail </h2>
+<div style="width: 100%; height: 100%; overflow-y: scroll;">
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.refID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequestID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContainerID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.shipmentsubscription_status_verbose)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.shipmentsubscription_status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.shipmentsubscription_on_hold)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.shipmentsubscription_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status_verbose)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lifecycle_status_verbose)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.current_vessel_nextport_eta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.current_vessel_nextport_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.current_vessel_nextport_locode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.current_vessel_position_latitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.current_vessel_position_timestamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.current_vessel_position_heading)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.current_vessel_position_longitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.current_vessel_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.current_vessel_imo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.current_vessel_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp4_loc_ShipmentID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp4_loc_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp4_loc_locode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp3_loc_ShipmentID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp3_loc_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp3_loc_locode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp2_loc_ShipmentID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp2_loc_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp2_loc_locode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp1_loc_ShipmentID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp1_loc_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp1_loc_locode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leg5_vessel_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leg5_vessel_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leg5_vessel_imo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leg4_vessel_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leg4_vessel_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leg4_vessel_imo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leg3_vessel_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leg3_vessel_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leg3_vessel_imo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leg2_vessel_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leg2_vessel_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leg2_vessel_imo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leg1_vessel_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leg1_vessel_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leg1_vessel_imo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dlv_loc_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dlv_loc_locode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pod_loc_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pod_loc_locode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pol_loc_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pol_loc_locode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.origin_loc_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.origin_loc_locode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.carrier_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.carrier_scac)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.container_type_iso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.container_type_str)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.container_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.booking_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bl_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lifecycle_status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descriptive_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.empty_pickup_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.empty_pickup_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.empty_pickup_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.origin_pickup_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.origin_pickup_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.origin_pickup_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pol_arrival_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pol_arrival_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pol_arrival_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pol_loaded_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pol_loaded_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pol_loaded_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pol_vsldeparture_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pol_vsldeparture_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pol_vsldeparture_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pol_vsldeparture_detected)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leg1_voyage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp1_vslarrival_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp1_vslarrival_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp1_vslarrival_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp1_vslarrival_detected)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp1_discharge_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp1_discharge_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp1_discharge_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp1_loaded_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp1_loaded_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp1_loaded_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp1_vsldeparture_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp1_vsldeparture_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp1_vsldeparture_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp1_vsldeparture_detected)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leg2_voyage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp2_vslarrival_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp2_vslarrival_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp2_vslarrival_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp2_vslarrival_detected)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp2_discharge_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp2_discharge_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp2_discharge_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp2_loaded_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp2_loaded_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp2_loaded_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp2_vsldeparture_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp2_vsldeparture_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp2_vsldeparture_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp2_vsldeparture_detected)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leg3_voyage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp3_vslarrival_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp3_vslarrival_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp3_vslarrival_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp3_vslarrival_detected)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp3_discharge_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp3_discharge_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp3_discharge_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp3_loaded_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp3_loaded_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp3_loaded_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp3_vsldeparture_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp3_vsldeparture_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp3_vsldeparture_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp3_vsldeparture_detected)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leg4_voyage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp4_vslarrival_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp4_vslarrival_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp4_vslarrival_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp4_vslarrival_detected)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp4_discharge_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp4_discharge_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp4_discharge_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp4_loaded_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp4_loaded_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp4_loaded_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp4_vsldeparture_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp4_vsldeparture_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp4_vsldeparture_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tsp4_vsldeparture_detected)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leg5_voyage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pod_vslarrival_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pod_vslarrival_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pod_vslarrival_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pod_vslarrival_detected)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pod_discharge_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pod_discharge_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pod_discharge_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pod_departure_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pod_departure_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pod_departure_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dlv_delivery_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dlv_delivery_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dlv_delivery_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.empty_return_planned_initial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.empty_return_planned_last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.empty_return_actual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ts_count)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.last_carrier_update)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.last_actuals_update)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.modified)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.shipmentsubscription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.empty_pickup_loc_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.empty_pickup_loc_locode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lif_loc_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lif_loc_locode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.empty_return_loc_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.empty_return_loc_locode)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.refID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequestID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContainerID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.shipmentsubscription_status_verbose)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.shipmentsubscription_status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.shipmentsubscription_on_hold)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.shipmentsubscription_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status_verbose)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lifecycle_status_verbose)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.current_vessel_nextport_eta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.current_vessel_nextport_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.current_vessel_nextport_locode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.current_vessel_position_latitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.current_vessel_position_timestamp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.current_vessel_position_heading)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.current_vessel_position_longitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.current_vessel_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.current_vessel_imo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.current_vessel_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp4_loc_ShipmentID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp4_loc_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp4_loc_locode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp3_loc_ShipmentID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp3_loc_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp3_loc_locode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp2_loc_ShipmentID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp2_loc_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp2_loc_locode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp1_loc_ShipmentID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp1_loc_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp1_loc_locode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leg5_vessel_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leg5_vessel_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leg5_vessel_imo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leg4_vessel_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leg4_vessel_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leg4_vessel_imo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leg3_vessel_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leg3_vessel_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leg3_vessel_imo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leg2_vessel_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leg2_vessel_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leg2_vessel_imo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leg1_vessel_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leg1_vessel_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leg1_vessel_imo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dlv_loc_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dlv_loc_locode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pod_loc_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pod_loc_locode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pol_loc_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pol_loc_locode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.origin_loc_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.origin_loc_locode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.carrier_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.carrier_scac)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.container_type_iso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.container_type_str)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.url)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.container_number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.booking_number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bl_number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.weight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lifecycle_status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descriptive_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.empty_pickup_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.empty_pickup_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.empty_pickup_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.origin_pickup_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.origin_pickup_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.origin_pickup_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pol_arrival_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pol_arrival_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pol_arrival_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pol_loaded_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pol_loaded_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pol_loaded_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pol_vsldeparture_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pol_vsldeparture_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pol_vsldeparture_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pol_vsldeparture_detected)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leg1_voyage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp1_vslarrival_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp1_vslarrival_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp1_vslarrival_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp1_vslarrival_detected)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp1_discharge_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp1_discharge_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp1_discharge_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp1_loaded_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp1_loaded_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp1_loaded_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp1_vsldeparture_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp1_vsldeparture_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp1_vsldeparture_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp1_vsldeparture_detected)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leg2_voyage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp2_vslarrival_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp2_vslarrival_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp2_vslarrival_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp2_vslarrival_detected)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp2_discharge_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp2_discharge_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp2_discharge_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp2_loaded_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp2_loaded_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp2_loaded_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp2_vsldeparture_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp2_vsldeparture_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp2_vsldeparture_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp2_vsldeparture_detected)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leg3_voyage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp3_vslarrival_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp3_vslarrival_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp3_vslarrival_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp3_vslarrival_detected)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp3_discharge_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp3_discharge_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp3_discharge_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp3_loaded_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp3_loaded_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp3_loaded_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp3_vsldeparture_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp3_vsldeparture_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp3_vsldeparture_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp3_vsldeparture_detected)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leg4_voyage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp4_vslarrival_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp4_vslarrival_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp4_vslarrival_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp4_vslarrival_detected)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp4_discharge_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp4_discharge_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp4_discharge_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp4_loaded_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp4_loaded_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp4_loaded_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp4_vsldeparture_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp4_vsldeparture_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp4_vsldeparture_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsp4_vsldeparture_detected)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leg5_voyage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pod_vslarrival_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pod_vslarrival_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pod_vslarrival_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pod_vslarrival_detected)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pod_discharge_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pod_discharge_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pod_discharge_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pod_departure_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pod_departure_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pod_departure_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dlv_delivery_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dlv_delivery_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dlv_delivery_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.empty_return_planned_initial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.empty_return_planned_last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.empty_return_actual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ts_count)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.last_carrier_update)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.last_actuals_update)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.created)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.modified)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.shipmentsubscription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.empty_pickup_loc_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.empty_pickup_loc_locode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lif_loc_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lif_loc_locode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.empty_return_loc_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.empty_return_loc_locode)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<br />
+<div>
+    @Html.ActionLink("Back to List", "RequestContainer", "RequestInformation")
+</div>
